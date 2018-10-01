@@ -532,7 +532,9 @@ static void __jump_label_mod_update(struct static_key *key)
 			stop = __stop___jump_table;
 		else
 			stop = m->jump_entries + m->num_jump_entries;
-		__jump_label_update(key, mod->entries, stop);
+		__jump_label_update(key, mod->entries, stop,
+				    m && m->state == MODULE_STATE_COMING);
+
 	}
 }
 
