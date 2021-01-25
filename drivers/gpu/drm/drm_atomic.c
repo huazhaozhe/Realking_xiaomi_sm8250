@@ -33,6 +33,7 @@
 #include <drm/drm_writeback.h>
 #include <linux/pm_qos.h>
 #include <linux/devfreq_boost.h>
+#include <linux/pm_qos.h>
 #include <linux/sync_file.h>
 #include <linux/devfreq_boost.h>
 #include <linux/cpu_input_boost.h>
@@ -2752,6 +2753,7 @@ int drm_mode_atomic_ioctl(struct drm_device *dev, void *data,
 		.type = PM_QOS_REQ_AFFINE_CORES,
 		.cpus_affine = ATOMIC_INIT(BIT(raw_smp_processor_id()) |
 					   *cpumask_bits(cpu_perf_mask))
+
 	};
 	int ret;
 
