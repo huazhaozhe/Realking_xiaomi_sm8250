@@ -31,11 +31,9 @@ echo -e "***********************************************$nocol"
 make $KERNEL_DEFCONFIG O=out CC=clang
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
-                      CC=clang \
                       CROSS_COMPILE=aarch64-linux-gnu- \
-                      NM=llvm-nm \
-                      OBJCOPY=llvm-objcopy \
-                      OBJDUMP=llvm-objdump \
-                      STRIP=llvm-strip
+                      CROSS_COMPILE_COMPAT=arm-linux-gnueabi- \
+                      LLVM=1 \
+                      LLVM_IAS=1
                       
 
